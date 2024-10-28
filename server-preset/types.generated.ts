@@ -138,6 +138,7 @@ export type ResolversParentTypes = {
 };
 
 export type FoodResolvers<ContextType = any, ParentType extends ResolversParentTypes['Food'] = ResolversParentTypes['Food']> = {
+  __resolveReference: ReferenceResolver<Maybe<ResolversTypes['Food']>, { __typename: 'Food' } & GraphQLRecursivePick<ParentType, {"id":true}>, ContextType>;
   id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
   meals?: Resolver<Array<ResolversTypes['Meal']>, ParentType, ContextType>;
   name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;

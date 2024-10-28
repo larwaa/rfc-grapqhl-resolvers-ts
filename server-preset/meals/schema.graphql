@@ -1,12 +1,12 @@
 extend schema @link(url: "https://specs.apollo.dev/federation/v2.3", import: ["@key", "@requires", "@external"])
 
-type Food {
+type Food @key(fields: "id", resolveable: true) {
     id: ID!
     name: String!
     meals: [Meal!]!
 }
 
-type Meal @key(fields: "id") {
+type Meal @key(fields: "id", resolveable: false) {
     id: ID!
     diet: String! @external
     foods: [Food!]! @requires(fields: "diet")
