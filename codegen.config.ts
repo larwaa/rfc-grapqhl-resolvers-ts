@@ -22,6 +22,9 @@ const config: CodegenConfig = {
         },
         "./server-preset/": defineConfig({
             emitLegacyCommonJSImports: false,
+            typesPluginsConfig: {
+                federation: true,
+            }
         }, {
             schema: "./server-preset/**/schema.graphql",
         })

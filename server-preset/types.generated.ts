@@ -14,6 +14,7 @@ export type Scalars = {
   Boolean: { input: boolean; output: boolean; }
   Int: { input: number; output: number; }
   Float: { input: number; output: number; }
+  _FieldSet: { input: any; output: any; }
 };
 
 export type Food = {
@@ -40,6 +41,17 @@ export type Query = {
 
 export type ResolverTypeWrapper<T> = Promise<T> | T;
 
+export type ReferenceResolver<TResult, TReference, TContext> = (
+      reference: TReference,
+      context: TContext,
+      info: GraphQLResolveInfo
+    ) => Promise<TResult> | TResult;
+
+      type ScalarCheck<T, S> = S extends true ? T : NullableCheck<T, S>;
+      type NullableCheck<T, S> = Maybe<T> extends T ? Maybe<ListCheck<NonNullable<T>, S>> : ListCheck<T, S>;
+      type ListCheck<T, S> = T extends (infer U)[] ? NullableCheck<U, S>[] : GraphQLRecursivePick<T, S>;
+      export type GraphQLRecursivePick<T, S> = { [K in keyof T & keyof S]: ScalarCheck<T[K], S[K]> };
+    
 
 export type ResolverWithResolve<TResult, TParent, TContext, TArgs> = {
   resolve: ResolverFn<TResult, TParent, TContext, TArgs>;
@@ -133,10 +145,11 @@ export type FoodResolvers<ContextType = any, ParentType extends ResolversParentT
 };
 
 export type MealResolvers<ContextType = any, ParentType extends ResolversParentTypes['Meal'] = ResolversParentTypes['Meal']> = {
-  diet?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  foods?: Resolver<Array<ResolversTypes['Food']>, ParentType, ContextType>;
-  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
-  related?: Resolver<Array<ResolversTypes['Meal']>, ParentType, ContextType>;
+  __resolveReference: ReferenceResolver<Maybe<ResolversTypes['Meal']>, { __typename: 'Meal' } & GraphQLRecursivePick<ParentType, {"id":true}>, ContextType>;
+
+  foods?: Resolver<Array<ResolversTypes['Food']>, { __typename: 'Meal' } & GraphQLRecursivePick<ParentType, {"id":true}> & GraphQLRecursivePick<ParentType, {"diet":true}>, ContextType>;
+  id?: Resolver<ResolversTypes['ID'], { __typename: 'Meal' } & GraphQLRecursivePick<ParentType, {"id":true}>, ContextType>;
+  related?: Resolver<Array<ResolversTypes['Meal']>, { __typename: 'Meal' } & GraphQLRecursivePick<ParentType, {"id":true}> & GraphQLRecursivePick<ParentType, {"diet":true}>, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
