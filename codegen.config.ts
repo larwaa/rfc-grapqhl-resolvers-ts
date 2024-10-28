@@ -1,9 +1,10 @@
 import type { CodegenConfig } from "@graphql-codegen/cli";
+import { defineConfig } from "@eddeee888/gcg-typescript-resolver-files";
 
 const config: CodegenConfig = {
-    schema: "./schema.graphql",
     generates: {
-        "./types.ts": {
+        "./current/types.ts": {
+            schema: "./current/schema.graphql",
             plugins: ["typescript", "typescript-resolvers"],
             config: {
                 federation: true,
@@ -18,7 +19,12 @@ const config: CodegenConfig = {
                     Meal: "./mappers.js#MealMapper",
                 }
             },
-        }
+        },
+        "./server-preset/": defineConfig({
+            emitLegacyCommonJSImports: false,
+        }, {
+            schema: "./server-preset/**/schema.graphql",
+        })
     }
 }
 

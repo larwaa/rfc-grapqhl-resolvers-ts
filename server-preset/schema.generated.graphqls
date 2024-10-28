@@ -1,0 +1,16 @@
+type Food {
+  id: ID!
+  meals: [Meal!]!
+  name: String!
+}
+
+type Meal {
+  diet: String!
+  foods: [Food!]!
+  id: ID!
+  related: [Meal!]!
+}
+
+type Query {
+  getFoods: [Food!]!
+}
