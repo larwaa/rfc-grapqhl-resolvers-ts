@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@apollo/subgraph':
+        specifier: ^2.9.3
+        version: 2.9.3(graphql@16.9.0)
       '@graphql-codegen/cli':
         specifier: ^5.0.3
         version: 5.0.3(@types/node@22.8.1)(graphql@16.9.0)(typescript@5.6.3)
@@ -17,6 +20,15 @@ importers:
       '@graphql-codegen/typescript-resolvers':
         specifier: ^4.4.0
         version: 4.4.0(graphql@16.9.0)
+      '@pothos/core':
+        specifier: ^4.3.0
+        version: 4.3.0(graphql@16.9.0)
+      '@pothos/plugin-directives':
+        specifier: ^4.1.0
+        version: 4.1.0(graphql@16.9.0)
+      '@pothos/plugin-federation':
+        specifier: ^4.1.0
+        version: 4.1.0(@apollo/subgraph@2.9.3(graphql@16.9.0))(graphql@16.9.0)
       graphql:
         specifier: ^16.9.0
         version: 16.9.0
@@ -29,6 +41,23 @@ packages:
   '@ampproject/remapping@2.3.0':
     resolution: {integrity: sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw==}
     engines: {node: '>=6.0.0'}
+
+  '@apollo/cache-control-types@1.0.3':
+    resolution: {integrity: sha512-F17/vCp7QVwom9eG7ToauIKdAxpSoadsJnqIfyryLFSkLSOEqu+eC5Z3N8OXcUVStuOMcNHlyraRsA6rRICu4g==}
+    peerDependencies:
+      graphql: 14.x || 15.x || 16.x
+
+  '@apollo/federation-internals@2.9.3':
+    resolution: {integrity: sha512-r50Ykc331CZUw4TxpcqprAZOlGkbzoHEiHObUqUhQopTx8i0aXNt+0pc3nzqUAoT9OD83yJqPJV1EiZF2vCupQ==}
+    engines: {node: '>=14.15.0'}
+    peerDependencies:
+      graphql: ^16.5.0
+
+  '@apollo/subgraph@2.9.3':
+    resolution: {integrity: sha512-oaC79gM01kdXRBal8gGms1bpBwqe8AsX82yNYUPO/Tb7R1n+sCYcFrVqG25YeBYXWNP2qbJuD2yBGcsrEWnS1w==}
+    engines: {node: '>=14.15.0'}
+    peerDependencies:
+      graphql: ^16.5.0
 
   '@ardatan/relay-compiler@12.0.0':
     resolution: {integrity: sha512-9anThAaj1dQr6IGmzBMcfzOQKTa5artjuPmw8NYK/fiGEMjADbSguBY2FMDykt+QhilR3wc9VA/3yVju7JHg7Q==}
@@ -561,6 +590,22 @@ packages:
     resolution: {integrity: sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg==}
     engines: {node: '>= 8'}
 
+  '@pothos/core@4.3.0':
+    resolution: {integrity: sha512-i4nyI8wSCjxdHUomqQ2K3FH0Glklomfv4tJNifQVU9lPtQKoKaS69VxGv+fru0HAZzb1eC1XPEPN3XPCYcvZ7Q==}
+    peerDependencies:
+      graphql: '>=16.6.0'
+
+  '@pothos/plugin-directives@4.1.0':
+    resolution: {integrity: sha512-RFqdrCeqdY14xmAXfEznAmh/6bLlAcxr+/Zl9KbjLUOxShx/ARqS6zN4YvU/Qur7hxFSpjzF/5pSjUPwJjWkvg==}
+    peerDependencies:
+      graphql: '>=16.6.0'
+
+  '@pothos/plugin-federation@4.1.0':
+    resolution: {integrity: sha512-5PEY/BNA0Ttouhrc2s62GDiMpTRDviXv4L3YG5CtdT96X2DJb2jZroJT5rhNgH8ww001KbJ6lVle7eid1ySHKA==}
+    peerDependencies:
+      '@apollo/subgraph': ^2.0.0
+      graphql: '>=16.6.0'
+
   '@repeaterjs/repeater@3.0.6':
     resolution: {integrity: sha512-Javneu5lsuhwNCryN+pXH93VPQ8g0dBX7wItHFgYiwQmzE1sVdg5tWHiOgHywzL2W21XQopa7IwIEnNbmeUJYA==}
 
@@ -569,6 +614,9 @@ packages:
 
   '@types/node@22.8.1':
     resolution: {integrity: sha512-k6Gi8Yyo8EtrNtkHXutUu2corfDf9su95VYVP10aGYMMROM6SAItZi0w1XszA6RtWTHSVp5OeFof37w0IEqCQg==}
+
+  '@types/uuid@9.0.8':
+    resolution: {integrity: sha512-jg+97EGIcY9AGHJJRaaPVgetKDsrTgbRjQ5Msgjh/DQKEFl0DtyRr/VCOyD1T2R1MNeWPK/u7JoGhlDZnKBAfA==}
 
   '@types/ws@8.5.12':
     resolution: {integrity: sha512-3tPRkv1EtkDpzlgyKyI8pGsGZAGPEaXeu0DOj5DI25Ja91bdAYddYHbADRYVrZMRbfW+1l5YwXVDKohDJNQxkQ==}
@@ -1044,6 +1092,10 @@ packages:
   jose@5.9.6:
     resolution: {integrity: sha512-AMlnetc9+CV9asI19zHmrgS/WYsWUwCn2R7RzlbJWD7F9eWYUTGyBmU9o6PxngtLGOiDGPRu+Uc4fhKzbpteZQ==}
 
+  js-levenshtein@1.1.6:
+    resolution: {integrity: sha512-X2BB11YZtrRqY4EnQcLX5Rh373zbK4alC1FW7D7MBhL2gtcC17cTnr6DmfHZeS0s2rTHjUTMMHfG7gO8SSdw+g==}
+    engines: {node: '>=0.10.0'}
+
   js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
 
@@ -1464,6 +1516,10 @@ packages:
   util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
 
+  uuid@9.0.1:
+    resolution: {integrity: sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA==}
+    hasBin: true
+
   value-or-promise@1.0.12:
     resolution: {integrity: sha512-Z6Uz+TYwEqE7ZN50gwn+1LCVo9ZVrpxRPOhOLnncYkY1ZzOYtrX8Fwf/rFktZ8R5mJms6EZf5TqNOMeZmnPq9Q==}
     engines: {node: '>=12'}
@@ -1547,6 +1603,24 @@ snapshots:
     dependencies:
       '@jridgewell/gen-mapping': 0.3.5
       '@jridgewell/trace-mapping': 0.3.25
+
+  '@apollo/cache-control-types@1.0.3(graphql@16.9.0)':
+    dependencies:
+      graphql: 16.9.0
+
+  '@apollo/federation-internals@2.9.3(graphql@16.9.0)':
+    dependencies:
+      '@types/uuid': 9.0.8
+      chalk: 4.1.2
+      graphql: 16.9.0
+      js-levenshtein: 1.1.6
+      uuid: 9.0.1
+
+  '@apollo/subgraph@2.9.3(graphql@16.9.0)':
+    dependencies:
+      '@apollo/cache-control-types': 1.0.3(graphql@16.9.0)
+      '@apollo/federation-internals': 2.9.3(graphql@16.9.0)
+      graphql: 16.9.0
 
   '@ardatan/relay-compiler@12.0.0(graphql@16.9.0)':
     dependencies:
@@ -2378,6 +2452,19 @@ snapshots:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.17.1
 
+  '@pothos/core@4.3.0(graphql@16.9.0)':
+    dependencies:
+      graphql: 16.9.0
+
+  '@pothos/plugin-directives@4.1.0(graphql@16.9.0)':
+    dependencies:
+      graphql: 16.9.0
+
+  '@pothos/plugin-federation@4.1.0(@apollo/subgraph@2.9.3(graphql@16.9.0))(graphql@16.9.0)':
+    dependencies:
+      '@apollo/subgraph': 2.9.3(graphql@16.9.0)
+      graphql: 16.9.0
+
   '@repeaterjs/repeater@3.0.6': {}
 
   '@types/js-yaml@4.0.9': {}
@@ -2385,6 +2472,8 @@ snapshots:
   '@types/node@22.8.1':
     dependencies:
       undici-types: 6.19.8
+
+  '@types/uuid@9.0.8': {}
 
   '@types/ws@8.5.12':
     dependencies:
@@ -2919,6 +3008,8 @@ snapshots:
 
   jose@5.9.6: {}
 
+  js-levenshtein@1.1.6: {}
+
   js-tokens@4.0.0: {}
 
   js-yaml@4.1.0:
@@ -3302,6 +3393,8 @@ snapshots:
   urlpattern-polyfill@10.0.0: {}
 
   util-deprecate@1.0.2: {}
+
+  uuid@9.0.1: {}
 
   value-or-promise@1.0.12: {}
 
