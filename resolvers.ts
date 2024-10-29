@@ -74,4 +74,24 @@ builder.asEntity(Food, {
     }
 })
 
+builder.queryType({
+    fields: (t) => ({
+        getFoods: t.field({
+            type: t.listRef(Food, { nullable: false}),
+            resolve: async (parent, args, ctx) => {
+                return [{
+                    id: "apple",
+                    name: "Pink Lady"
+                }, {
+                    id: "orange",
+                    name: "Cevita"
+                }]
+            },
+            args: {
+                diet: t.arg.string({ required: true})
+            }
+        })
+    })
+})
+
 console.log(printSubgraphSchema(builder.toSchema()))
